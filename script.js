@@ -29,31 +29,44 @@ document.querySelector(".check").addEventListener("click", function () {
     if (score < highscore) {
       document.querySelector(".highscore").textContent = score;
     }
+  } else if (guess !== secretNumber) {
+    if (score > 1) {
+      document.querySelector(".message").textContent =
+        guess > secretNumber
+          ? "Wpisana za duża liczba"
+          : "Potrzebna wyższa liczba";
+      score--;
+      document.querySelector(".score").textContent = score;
+    } else {
+      document.querySelector(".message").textContent =
+        "Wykorzystałeś wszystkie szanse";
+      document.querySelector(".score").textContent = 0;
+    }
   }
   // jeśli liczba jest mniejsza od secret number
-  else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent =
-        "Potrzebna wyższa liczba";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      document.querySelector(".message").textContent =
-        "Wykorzystałeś wszystkie szanse";
-      document.querySelector(".score").textContent = 0;
-    }
-    // jeśli liczba jest większa od secret number
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "Wpisana za duża liczba";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      document.querySelector(".message").textContent =
-        "Wykorzystałeś wszystkie szanse";
-      document.querySelector(".score").textContent = 0;
-    }
-  }
+  // else if (guess < secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector(".message").textContent = guess > secretNumber ?
+  //       "Potrzebna wyższa liczba" : "Wpisana za duża liczba";
+  //     score--;
+  //     document.querySelector(".score").textContent = score;
+  //   } else {
+  //     document.querySelector(".message").textContent =
+  //       "Wykorzystałeś wszystkie szanse";
+  //     document.querySelector(".score").textContent = 0;
+  //   }
+  //   // jeśli liczba jest większa od secret number
+  // } else if (guess > secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector(".message").textContent = "Wpisana za duża liczba";
+  //     score--;
+  //     document.querySelector(".score").textContent = score;
+  //   } else {
+  //     document.querySelector(".message").textContent =
+  //       "Wykorzystałeś wszystkie szanse";
+  //     document.querySelector(".score").textContent = 0;
+  //   }
+  // }
 });
 
 //restart gry
