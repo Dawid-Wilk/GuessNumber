@@ -4,6 +4,14 @@ let secretNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 let highscore = 20;
 
+let input = document.querySelector(".guess");
+
+input.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    document.querySelector(".check").click();
+  }
+});
+
 let passMessage = function (message) {
   document.querySelector(".message").textContent = message;
 };
