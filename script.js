@@ -4,16 +4,22 @@ let secretNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 let highscore = 20;
 
+let passMessage = function (message) {
+  document.querySelector(".message").textContent = message;
+};
+
 document.querySelector(".check").addEventListener("click", function () {
   let guess = Number(document.querySelector(".guess").value);
 
   // jeśli nic nie zostanie wpisane
   if (!guess) {
-    document.querySelector(".message").textContent = "Wpisz numer :)";
+    //  document.querySelector(".message").textContent = "Wpisz numer :)";
+    passMessage("Wpisz numer :)");
   }
   //jeśli gracz wygra
   else if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "Gratulacje! Easy win!";
+    //  document.querySelector(".message").textContent = "Gratulacje! Easy win!";
+    passMessage("Gratulacje! Easy win!");
     document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.color = "#60b347";
@@ -31,15 +37,17 @@ document.querySelector(".check").addEventListener("click", function () {
     }
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector(".message").textContent =
+      //    document.querySelector(".message").textContent =
+      passMessage(
         guess > secretNumber
           ? "Wpisana za duża liczba"
-          : "Potrzebna wyższa liczba";
+          : "Potrzebna wyższa liczba"
+      );
       score--;
       document.querySelector(".score").textContent = score;
     } else {
-      document.querySelector(".message").textContent =
-        "Wykorzystałeś wszystkie szanse";
+      //  document.querySelector(".message").textContent =
+      passMessage("Wykorzystałeś wszystkie szanse");
       document.querySelector(".score").textContent = 0;
     }
   }
