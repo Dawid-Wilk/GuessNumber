@@ -3,7 +3,8 @@
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
 let score = 20;
 let highscore = 20;
-
+let numer = document.querySelector(".number");
+let wynik = document.querySelector(".score");
 let input = document.querySelector(".guess");
 
 input.addEventListener("keyup", function (event) {
@@ -17,7 +18,7 @@ let passMessage = function (message) {
 };
 
 document.querySelector(".check").addEventListener("click", function () {
-  let guess = Number(document.querySelector(".guess").value);
+  let guess = Number(input.value);
 
   // jeśli nic nie zostanie wpisane
   if (!guess) {
@@ -28,11 +29,11 @@ document.querySelector(".check").addEventListener("click", function () {
   else if (guess === secretNumber) {
     //  document.querySelector(".message").textContent = "Gratulacje! Easy win!";
     passMessage("Gratulacje! Easy win!");
-    document.querySelector(".number").textContent = secretNumber;
+    numer.textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
-    document.querySelector(".number").style.color = "#60b347";
-    document.querySelector(".guess").style.color = "#60b347";
-    document.querySelector(".number").style.width = "30rem";
+    numer.style.color = "#60b347";
+    input.style.color = "#60b347";
+    numer.style.width = "30rem";
 
     let zielonyBtn = document.querySelectorAll("button");
     let i;
@@ -52,11 +53,11 @@ document.querySelector(".check").addEventListener("click", function () {
           : "Potrzebna wyższa liczba"
       );
       score--;
-      document.querySelector(".score").textContent = score;
+      wynik.textContent = score;
     } else {
       //  document.querySelector(".message").textContent =
       passMessage("Wykorzystałeś wszystkie szanse");
-      document.querySelector(".score").textContent = 0;
+      wynik.textContent = 0;
     }
   }
   // jeśli liczba jest mniejsza od secret number
@@ -91,13 +92,13 @@ document.querySelector(".again").addEventListener("click", function () {
   secretNumber = Math.trunc(Math.random() * 20 + 1);
 
   document.querySelector("body").style.backgroundColor = "#3b5998";
-  document.querySelector(".score").textContent = score;
-  document.querySelector(".guess").value = "";
-  document.querySelector(".guess").style.color = "#3b5998";
-  document.querySelector(".number").textContent = "?";
-  document.querySelector(".number").style.width = "15rem";
-  document.querySelector(".number").style.color = "#3b5998";
-  document.querySelector(".message").textContent = "Start guessing...";
+  wynik.textContent = score;
+  input.value = "";
+  input.style.color = "#3b5998";
+  numer.textContent = "?";
+  numer.style.width = "13rem";
+  numer.style.color = "#3b5998";
+  passMessage("Rozpocznij zgadywanie...");
 
   let niebieskiBtn = document.querySelectorAll("button");
   let i;
